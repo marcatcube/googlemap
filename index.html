@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta content="text/css" http-equiv="Content-Style-Type" />
+<meta content="text/javascript" http-equiv="Content-Script-Type" />
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta http-equiv="expires" content="86400">
+<meta http-equiv="Content-Language" content="ja">
+<meta name="Robots" content="noodp">
+<meta name="Author" content="Marcatucube">
+<meta name="copyright" content="" />
+<style>
+* {
+	margin:0;padding:0;
+}
+.i4ewOd-pzNkMb-haAclf {
+	display:none;
+}
+h2 {
+    text-align: center;
+    padding: 2% 0;
+}
+p {
+	line-height:150%;
+	margin:2% 0;
+    text-align: center;
+}
+.gmap {
+	width:100%;
+	position: relative;
+	padding-bottom: 17.5%;
+	padding-top: 17.5%;
+	height: 0;
+	overflow: hidden;
+}
+.gmap iframe,.gmap object,.gmap embed {
+	position: absolute;
+	top: -30%;
+	left: -25%;
+	width: 150%;
+	height: 160%;
+}
+</style>
+</head>
+<body id="page_top" class="index_body">
+<h2>GoogleMapをAPIキーなしで呼び込む！！</h2>
+<p>
+1.ログインして Google マップを開きます。<br>
+2.メニュー メニュー 次へ [マイプレイス] 次へ [マイマップ] の順にクリックします。<br>
+3.地図を編集するには、地図を選択して [マイマップで開く] をクリックします。マイマップが表示され、地図を編集します。
+</p>
+<div class="gmap">
+<iframe src="https://www.google.com/maps/d/embed?mid=1A-VasevPm9FoICjSIarF2q1ExTU0JsB7" width="640" height="480"></iframe>
+</div>
+
+<script type='text/javascript' src='//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+<script type='text/javascript' src='//cdnjs.cloudflare.com/ajax/libs/jquery-migrate/1.4.1/jquery-migrate.min.js' defer charset='UTF-8'></script>
+<script>
+        $(function() {
+            var map = $('iframe');
+            //あらかじめiframeにpointer-events:noneを掛け、マウスイベントを無効にしておく
+            map.css('pointer-events', 'none');
+            //一度クリックされたらマウスイベントを有効にする
+            $('.gmap').click(function() {
+                map.css('pointer-events', 'auto');
+            });
+            //iframeからマウスが離れたら再度pointer-events:noneを効かせる
+            map.mouseout(function() {
+                map.css('pointer-events', 'none');
+            });
+        })
+</script>
+</body>
+</html>
